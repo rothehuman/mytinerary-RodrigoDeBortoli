@@ -9,7 +9,10 @@ const Hero = () => {
                 <div>
                 <h1 className="text-5xl font-bold">MyTinerary</h1>
                 <h2 className="py-6 font-bold">Find your perfect trip, designed by insiders who know and love their cities!</h2>
+                <a href="about:blank" target="_blank">
                 <button className="btn btn-accent">Cities</button>
+                </a>
+                
                 </div>
             </div>
         </div>

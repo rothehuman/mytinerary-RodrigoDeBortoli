@@ -11,7 +11,7 @@ const Header = () => {
               </label>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a>Home</a></li>
-                <li><a>Cities</a></li>
+                <li><a href="about:blank" target="_blank">Cities</a></li>
               </ul>
             </div>
             <a className="btn btn-ghost normal-case text-xl">MyTinerary</a>
@@ -19,7 +19,7 @@ const Header = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li><a>Home</a></li>
-              <li><a>Cities</a></li>
+              <li><a href="about:blank" target="_blank">Cities</a></li>
             </ul>
           </div>
           <div className="navbar-end">
