@@ -1,18 +1,15 @@
-import './App.css'
+import { RouterProvider } from "react-router-dom"
+import router from "./router/router"
+
+/* import './App.css'
 import Main from './layouts/Main'
-import Hero from './components/Hero'
-import Carousel from './components/Carousel'
+import Home from './pages/Home' */
 
 
 function App() {
 
   return (
-    <>
-      <Main>
-        <Hero/>
-        <Carousel/>
-      </Main>
-    </>
+    <RouterProvider router={router}/>
   )
 }
 
