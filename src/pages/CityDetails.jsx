@@ -23,7 +23,7 @@ const CityDetails = () => {
 
             <Link /* key={city._id} */ to={`/cities`}>
                 <article
-                    className="relative overflow-hidden rounded-lg shadow transition w-screen max-h-[600px] hover:shadow-lg mx-3 my-4"
+                    className="relative overflow-hidden rounded-lg shadow transition w-[80vw] max-h-[700px] hover:shadow-lg mx-3 my-4"
                 >
                     <img
                         alt="Name"/* {city.name} */
