@@ -1,43 +1,46 @@
 import { Link } from 'react-router-dom'
 import { Card } from '../components/Card'
-import axios from 'axios'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_cities, filter_cities } from '../store/actions/cityActions';
+
 
 const Cities = () => {
-    const [cities, setCities] = useState();
+    const cities = useSelector((store)=> store.cityReducer.cities)
+
+    const dispatch = useDispatch();
+
+    let inputSearch = useRef();
 
     useEffect(()=> {
-        axios.get('http://localhost:7000/api/cities?name=')
-            .then(response => setCities(response.data.cities))
-            .catch(err => console.log(err))
+        dispatch(get_cities())
     }, []);
 
-    const handleInputChange = async (event) => {
-        console.log(event.target.value)
-
-        try {
-            const response = await axios.get(`http://localhost:7000/api/cities?name=${event.target.value}`)
-            setCities(response.data.cities)
-        } catch (error) {
-            console.log(error)
-        }
+    const handleSearch = () => {
+        dispatch(filter_cities({
+            name: inputSearch.current.value
+        }))
     }
     
     return (
         <div className='flex flex-col items-center text-center'>
-
-            <input onChange={handleInputChange} className='border-2 border-gray-700 rounded-md py-1 px-2' type="text" placeholder='Search' />
+            <div className='flex'>
+                <input ref = {inputSearch} className='border-2 border-gray-700 rounded-md py-1 px-2' type="text" placeholder='Search'/>
+                <button onClick={handleSearch} className='btn m-2'>Search</button>
+            </div>
 
             <h2 className='text-3xl my-4'>Cities</h2>
             <div className='flex flex-wrap items-center mx-3'>
-                {
-                    cities?.map((city) => {
+                {   
+                cities.length > 0
+                ?   cities?.map((city) => {
                         return (
                             <Link key={city._id} to={`/cities/${city._id}`}>
                                 <Card name={city.name} country={city.country} url={city.url}/>
                             </Link>
                         )
                     })
+                :   <h2 className='m-3'>No cities found</h2>
                 }
             </div>
         </div>

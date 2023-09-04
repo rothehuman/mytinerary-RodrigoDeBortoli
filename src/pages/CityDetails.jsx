@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Itinerary } from '../components/Itinerary';
 
 const CityDetails = () => {
     const { id } = useParams();
     console.log(id)
 
-    const [city, setCity] = useState();
+    const [city, setCity] = useState(0);
 
     useEffect (()=> {
         axios.get(`http://localhost:7000/api/cities/${id}`)
@@ -21,13 +22,13 @@ const CityDetails = () => {
 
             <h2 className='text-3xl my-4'>City Details</h2>
 
-            <Link /* key={city._id} */ to={`/cities`}>
+            <Link key={city._id} to={`/cities`}>
                 <article
                     className="relative overflow-hidden rounded-lg shadow transition w-[80vw] max-h-[700px] hover:shadow-lg mx-3 my-4"
                 >
                     <img
-                        alt="Name"/* {city.name} */
-                        src="https://americalatina.travel/admin/uploads/Novedades-en-turismo-Ch_novedades1564066376.jpg"/* {city.url} */
+                        alt={city.name}
+                        src={city.url}
                         className="absolute inset-0 h-full w-full object-cover"
                     />
 
@@ -36,16 +37,33 @@ const CityDetails = () => {
                     >
                         <div className="p-4 sm:p-6">
                             <h3 className="mt-0.5 text-lg text-white">
-                                Name{/* {city.name} */}
+                                {city.name}
                             </h3>
 
                             <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-                                Country{/* {city.country} */}
+                                {city.country}
                             </p>
                         </div>
                     </div>
                 </article>
             </Link>
+
+            
+            <div className='flex flex-wrap items-center mx-3'>
+                {
+                    city.itineraries
+                    ?   city.itineraries.length > 0
+                        ?
+                            city.itineraries.map((itinerary) => {
+                                return (
+                                    <Itinerary title={itinerary.title} name={itinerary.name} photo_url={itinerary.photo_url} price={itinerary.price} duration={itinerary.duration} hashtag={itinerary.hashtag} comments={itinerary.comments}/>
+                                )
+                            })
+                        :   <h2 className='m-3'>No itineraries for this city</h2>
+                    :   <h2 className='m-3'>No itineraries for this city</h2>
+                }
+            </div>
+            <button className='btn m-2'>Vier More</button>
         </div>
     )
 }

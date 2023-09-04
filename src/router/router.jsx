@@ -3,6 +3,7 @@ import Main from '../layouts/Main'
 import Home from '../pages/Home'
 import Cities from "../pages/Cities";
 import CityDetails from "../pages/CityDetails"
+import SingIn from "../pages/Singin";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: '/cities/:id',
                 element: <CityDetails />
+            },
+            {
+                path: '/singin',
+                element: <SingIn/>
             }
         ]
     }
