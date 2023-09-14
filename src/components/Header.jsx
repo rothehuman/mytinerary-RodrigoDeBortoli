@@ -1,9 +1,13 @@
-import React from 'react'
+import { useState } from 'react'
 import { Link as Anchor } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const Header = () => {
-  const photo = useSelector(store => store.userReducer.photo)
+
+  let [show, setShow] = useState(false);
+  const user = useSelector(store => store.userReducer.user);
+
+  const defaultPhoto = 'https://www.icmetl.org/wp-content/uploads/2020/11/user-icon-human-person-sign-vector-10206693.png';
 
   return (
     <div>
@@ -28,7 +32,7 @@ const Header = () => {
           </div>
           <div className="navbar-end">
             <Anchor to={"./singin"} className="btn">
-              <img width={30} src={photo} alt="" />
+              Sign In<img width={30} src={user ? user.photo : defaultPhoto} alt="" />
             </Anchor>
           </div>
         </div>

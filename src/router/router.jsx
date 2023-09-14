@@ -3,7 +3,9 @@ import Main from '../layouts/Main'
 import Home from '../pages/Home'
 import Cities from "../pages/Cities";
 import CityDetails from "../pages/CityDetails"
-import SingIn from "../pages/Singin";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/Signup";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/cities',
                 element: <Cities />
+                
             },
             {
                 path: '/cities/:id',
@@ -24,8 +27,22 @@ const router = createBrowserRouter([
             },
             {
                 path: '/singin',
-                element: <SingIn/>
-            }
+                element: (<ProtectedRoute path='/'>
+                    <SignIn />
+                </ProtectedRoute>)
+            },
+            {
+                path: '/singup',
+                element: <SignUp />
+            },
+            {
+                path: '*',
+                element: <h1 className="text-3xl">ERROR</h1>
+            },
+            {
+                path: '/404',
+                element: <h1 className="text-3xl">ERROR 404</h1>
+            },
         ]
     }
 ]);
