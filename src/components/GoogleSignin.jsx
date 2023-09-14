@@ -17,14 +17,14 @@ export const GoogleSignin = () => {
     }
 
     useEffect(() => {
-        window.onload = function () {
+        if(window.google) {
             window.google.accounts.id.initialize({
                 client_id: "62077239350-vqham79brjq4epqdc738he0jp2c4g8nv.apps.googleusercontent.com",
                 callback: handleCredentialResponse
             });
             window.google.accounts.id.renderButton(
                 googleButton.current,
-                {type: 'standard', shape: 'pill', theme: "filled_black", size: "medium", text: 'signin_with' }  // customization attributes
+                { type: 'standard', shape: 'rectangular', theme: "outline", size: "large", text: 'signin_with' }  // customization attributes
             );
         }
     }, [])
