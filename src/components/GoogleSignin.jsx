@@ -13,7 +13,14 @@ export const GoogleSignin = () => {
 
         const userResponse = await axios.post('http://localhost:7000/api/auth/google', data);
 
+        localStorage.setItem('token', userResponse.data.response.token)
+        localStorage.setItem('user', JSON.stringify(userResponse.data.response.user))
+
         console.log(userResponse)
+        console.log(userResponse.data.response.token)
+        console.log(userResponse.data.response.user)
+
+        window.location.reload(true);
     }
 
     useEffect(() => {

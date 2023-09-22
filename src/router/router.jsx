@@ -26,13 +26,13 @@ const router = createBrowserRouter([
                 element: <CityDetails />
             },
             {
-                path: '/singin',
+                path: '/signin',
                 element: (<ProtectedRoute path='/'>
                     <SignIn />
                 </ProtectedRoute>)
             },
             {
-                path: '/singup',
+                path: '/signup',
                 element: <SignUp />
             },
             {

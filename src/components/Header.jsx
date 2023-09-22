@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link as Anchor } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import SignOut from './SignOut'
 
 const Header = () => {
 
@@ -31,9 +32,10 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Anchor to={"./singin"} className="btn">
+            <SignOut/>
+            {/* <Anchor to={"./signin"} className="btn">
               Sign In<img width={30} src={user ? user.photo : defaultPhoto} alt="" />
-            </Anchor>
+            </Anchor> */}
           </div>
         </div>
     </div>

@@ -117,7 +117,7 @@ const SignIn = () => {
                 <div className="flex items-center justify-between">
                     <p className="text-sm text-gray-500">
                         No account?
-                        <Link to={"../singup"} className="underline">Sign up</Link>
+                        <Link to={"../signup"} className="underline">Sign up</Link>
                     </p>
 
                     <button
